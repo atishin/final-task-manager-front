@@ -1,0 +1,17 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 50px 20px;
+    align-self: stretch;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+button {
+    align-self: center;
+}

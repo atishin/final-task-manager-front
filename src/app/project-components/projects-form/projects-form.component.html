@@ -1,0 +1,18 @@
+<md-card>
+    <md-card-title>
+        Project creation
+    </md-card-title>
+    <md-card-content>
+        <form [formGroup]="form">
+            <md-input-container>
+                <input type="text" mdInput placeholder="Title" formControlName="Title">
+            </md-input-container>
+            <md-input-container>
+                <input type="text" mdInput placeholder="Description" formControlName="Description">
+            </md-input-container>
+        </form>
+    </md-card-content>
+    <md-card-actions>
+        <button md-button color="primary" (click)="submit()">ADD</button>
+    </md-card-actions>
+</md-card>

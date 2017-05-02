@@ -1,4 +1,16 @@
-<h1>
-  {{title}}
-</h1>
-<router-outlet></router-outlet>
+<md-sidenav-container class="example-container">
+    <md-sidenav #sidenav class="example-sidenav" mode="push">
+        <app-login (signed-in)="sidenav.close()"></app-login>
+    </md-sidenav>
+
+    <div class="example-sidenav-content">
+        <md-toolbar>
+            <button md-icon-button (click)="sidenav.open()">
+            <md-icon>menu</md-icon>
+        </button>
+        </md-toolbar>
+    </div>
+    <div class="wrapper">
+        <router-outlet></router-outlet>
+    </div>
+</md-sidenav-container>

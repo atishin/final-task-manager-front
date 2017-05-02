@@ -1,0 +1,15 @@
+<form [formGroup]="form" *ngIf="!isAuthenticated; else authenticated">
+    <md-input-container>
+        <input type="text" mdInput placeholder="E-mail" formControlName="userName">
+    </md-input-container>
+    <md-input-container>
+        <input type="password" mdInput placeholder="Password" formControlName="password">
+    </md-input-container>
+    <button md-raised-button color="primary" (click)="signIn()">Sign In</button>
+</form>
+<ng-template #authenticated>
+    <form>
+        <span>Hello, {{ userName }}</span>
+        <button md-raised-button color="primary" (click)="signOut()">Sign Out</button>
+    </form>
+</ng-template>

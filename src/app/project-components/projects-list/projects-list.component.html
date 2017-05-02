@@ -1,0 +1,22 @@
+<md-card>
+    <md-card-title>
+        <div class="title">
+            <span>Projects list</span>
+            <a routerLink="/projects/add" md-icon-button>
+                <md-icon>add</md-icon>
+            </a>
+        </div>
+
+    </md-card-title>
+    <md-card-content>
+        <md-nav-list>
+            <ng-container *ngFor="let project of projects">
+                <md-list-item disableRipple="true" routerLink="/projects/show/{{ project.Id }}">
+                    <h4 md-line>{{ project.Title }}</h4>
+                    <p md-line>{{ project.Description }}</p>
+                </md-list-item>
+                <md-divider></md-divider>
+            </ng-container>
+        </md-nav-list>
+    </md-card-content>
+</md-card>
