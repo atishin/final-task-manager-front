@@ -25,8 +25,16 @@ export class ProjectsDetailComponent implements OnInit {
 
     private loadProject(id: number) {
         this.odata.getContext().subscribe(context => {
-            context.OProjects.Expand(p => p.Tasks).Single(id).subscribe(project => this.project = project);
+            context.OProjects.Expand(p => p.Tasks, p => p.ProjectChat.Messages).Single(id).subscribe(project => this.project = project);
         });
+    }
+
+    createChat() {
+        this.odata.getContext().subscribe(context => {
+            context.OProjectChats.Add({
+                Id: this.project.Id
+            }).subscribe(chat => console.log(chat));
+        })
     }
 
     ngOnInit() {

@@ -15,6 +15,8 @@ import { ProjectsFormComponent } from './project-components/projects-form/projec
 import { ProjectsDetailComponent } from './project-components/projects-detail/projects-detail.component';
 import { TMOdataService } from 'app/odata/TMOdataService';
 import { TasksFormComponent } from './task-components/tasks-form/tasks-form.component';
+import { ChatComponent } from './chat-components/chat/chat.component';
+import { SignalrService } from "app/chat-components/signalr.service";
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { TasksFormComponent } from './task-components/tasks-form/tasks-form.comp
     ProjectsPageComponent,
     ProjectsFormComponent,
     ProjectsDetailComponent,
-    TasksFormComponent
+    TasksFormComponent,
+    ChatComponent
   ],
   entryComponents: [
       LoginComponent
@@ -40,7 +43,8 @@ import { TasksFormComponent } from './task-components/tasks-form/tasks-form.comp
   ],
   providers: [
       AuthService,
-      TMOdataService
+      TMOdataService,
+      SignalrService
   ],
   bootstrap: [AppComponent]
 })

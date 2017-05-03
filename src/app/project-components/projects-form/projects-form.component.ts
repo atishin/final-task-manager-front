@@ -29,9 +29,10 @@ export class ProjectsFormComponent implements OnInit {
         this.odata.getContext().subscribe(context => {
             const model: IProject = _(this.form.value).cloneDeep();
             _(model).extendWith(<IProject>{
-                ManagerId: this.auth.userId
+                ManagerId: this.auth.userId,
+                ProjectChat: {}
             }).commit();
-            context.OProjects.Add(model).subscribe(() => {
+            context.OProjects.Add(model).subscribe((project) => {
                 this.router.navigate(['/projects']);
             });
         });

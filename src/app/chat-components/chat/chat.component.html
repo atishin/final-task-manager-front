@@ -1,0 +1,14 @@
+<h3>Project chat</h3>
+<md-list>
+    <md-list-item *ngFor="let message of messages">
+        <h4 color="accent" md-line>{{ message?.User?.UserName }} ( {{  message?.MessageTime | date : 'dd MMM HH:mm:ss'}} )</h4>
+        <span md-line>{{ message?.Text }}</span>
+    </md-list-item>
+</md-list>
+<div class="message-form">
+    <md-input-container>
+        <input type="text" mdInput placeholder="message" [(ngModel)]="message">
+
+    </md-input-container>
+    <button md-button color="primary" (click)="send()">Send</button>
+</div>

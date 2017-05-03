@@ -17,9 +17,11 @@
                 <span md-line> {{ task.StartDate | date }}</span>
             </md-list-item>
         </md-nav-list>
+        <app-chat *ngIf="project?.ProjectChat" [project-id]="project.Id"></app-chat>
     </md-card-content>
     <md-card-actions>
         <a md-button color="accent" routerLink="/tasks/add/{{ project?.Id }}">ADD TASK</a>
         <button md-button color="warn" (click)="remove()">REMOVE</button>
+        <button md-button color="primary" (click)="createChat()" *ngIf="project && !project.ProjectChat">CREATE CHAT</button>
     </md-card-actions>
 </md-card>
