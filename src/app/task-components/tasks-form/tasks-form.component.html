@@ -1,0 +1,24 @@
+<md-card>
+    <md-card-title>
+        Task creation
+    </md-card-title>
+    <md-card-content>
+        <form [formGroup]="form">
+            <md-input-container>
+                <input type="text" mdInput placeholder="Title" formControlName="Title">
+            </md-input-container>
+            <md-input-container>
+                <input type="text" mdInput placeholder="Description" formControlName="Description">
+            </md-input-container>
+            <md-select formControlName="TaskStatusId" placeholder="task">
+                <md-option *ngFor="let taskStatus of taskStatuses" [value]="taskStatus.Id">
+                    {{ taskStatus.StatusText }}
+                </md-option>
+            </md-select>
+        </form>
+    </md-card-content>
+    <md-card-actions>
+        <button md-button color="primary" (click)="submit()">ADD</button>
+        
+    </md-card-actions>
+</md-card>

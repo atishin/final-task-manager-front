@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { IProject } from 'app/project-components/models';
 import { API_URL } from 'app/const';
+import { TMOdataService } from 'app/odata/TMOdataService';
+import { IProject } from 'app/odata/types';
 
 @Component({
     selector: 'app-projects-list',
@@ -12,8 +13,14 @@ export class ProjectsListComponent implements OnInit {
 
     projects: IProject[] = [];
 
-    constructor(private http: Http) { 
-        this.http.get(`${API_URL}/api/Projects`).map(r => r.json()).subscribe(projects => this.projects = projects);
+    constructor(private odata: TMOdataService) {
+        odata.getContext().subscribe(context => {
+            context.OProjects
+                .Expand(p => p.Manager)
+                .Select(p => p.ALL_PROP, p => p.Manager.UserName)
+                .Get()
+                .subscribe(wrapper => this.projects = wrapper.value);
+        })
     }
 
     ngOnInit() {

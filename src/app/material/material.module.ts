@@ -11,6 +11,7 @@ import {
     MdToolbarModule,
     MdCardModule,
     MdListModule,
+    MdSelectModule,
 } from '@angular/material';
 
 @NgModule({
@@ -25,7 +26,8 @@ import {
         MdSnackBarModule,
         MdToolbarModule,
         MdCardModule,
-        MdListModule
+        MdListModule,
+        MdSelectModule,
     ],
     exports: [
         MdSidenavModule,
@@ -38,6 +40,7 @@ import {
         MdToolbarModule,
         MdCardModule,
         MdListModule,
+        MdSelectModule,
     ],
     declarations: []
 })

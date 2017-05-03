@@ -1,3 +1,25 @@
-<p>
-  projects-detail works!
-</p>
+<md-card>
+    <md-card-title>
+        <span *ngIf="project; else titlePreloader">
+          Project "{{ project.Title}}"
+        </span>
+        <ng-template #titlePreloader>
+            Loading...
+        </ng-template>
+    </md-card-title>
+    <md-card-content *ngIf="project">
+        <p>{{ project.Description }}</p>
+        <md-nav-list>
+            <md-list-item disableRipple="true" *ngFor="let task of project.Tasks">
+                <h4 md-line>
+                    {{ task.Title }}
+                </h4>
+                <span md-line> {{ task.StartDate | date }}</span>
+            </md-list-item>
+        </md-nav-list>
+    </md-card-content>
+    <md-card-actions>
+        <a md-button color="accent" routerLink="/tasks/add/{{ project?.Id }}">ADD TASK</a>
+        <button md-button color="warn" (click)="remove()">REMOVE</button>
+    </md-card-actions>
+</md-card>

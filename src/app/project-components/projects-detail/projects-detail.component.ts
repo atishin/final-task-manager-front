@@ -3,7 +3,8 @@ import { Http } from '@angular/http';
 import { API_URL } from 'app/const';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { IProject } from 'app/project-components/models';
+import { TMOdataService } from 'app/odata/TMOdataService';
+import { IProject } from 'app/odata/types';
 
 @Component({
     selector: 'app-projects-detail',
@@ -14,16 +15,18 @@ export class ProjectsDetailComponent implements OnInit {
 
     project: IProject;
 
-    constructor(private http: Http, private router: Router, private activatedRoute: ActivatedRoute) {
+    constructor(private http: Http, private router: Router, private activatedRoute: ActivatedRoute, private odata: TMOdataService) {
         this.activatedRoute.params.subscribe(params => {
             if ('id' in params) {
                 this.loadProject(Number.parseInt(params['id']));
             }
-        })
+        });
     }
 
     private loadProject(id: number) {
-        this.http.get(`${API_URL}/api/Projects/${id}`).subscribe(r => this.project = r.json());
+        this.odata.getContext().subscribe(context => {
+            context.OProjects.Expand(p => p.Tasks).Single(id).subscribe(project => this.project = project);
+        });
     }
 
     ngOnInit() {

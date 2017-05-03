@@ -13,6 +13,8 @@ import { ProjectsListComponent } from './project-components/projects-list/projec
 import { ProjectsPageComponent } from './project-components/projects-page/projects-page.component';
 import { ProjectsFormComponent } from './project-components/projects-form/projects-form.component';
 import { ProjectsDetailComponent } from './project-components/projects-detail/projects-detail.component';
+import { TMOdataService } from 'app/odata/TMOdataService';
+import { TasksFormComponent } from './task-components/tasks-form/tasks-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { ProjectsDetailComponent } from './project-components/projects-detail/pr
     ProjectsListComponent,
     ProjectsPageComponent,
     ProjectsFormComponent,
-    ProjectsDetailComponent
+    ProjectsDetailComponent,
+    TasksFormComponent
   ],
   entryComponents: [
       LoginComponent
@@ -36,7 +39,8 @@ import { ProjectsDetailComponent } from './project-components/projects-detail/pr
     AppRoutingModule
   ],
   providers: [
-      AuthService
+      AuthService,
+      TMOdataService
   ],
   bootstrap: [AppComponent]
 })

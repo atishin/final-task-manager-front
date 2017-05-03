@@ -13,7 +13,7 @@
             <ng-container *ngFor="let project of projects">
                 <md-list-item disableRipple="true" routerLink="/projects/show/{{ project.Id }}">
                     <h4 md-line>{{ project.Title }}</h4>
-                    <p md-line>{{ project.Description }}</p>
+                    <p md-line>{{ (project?.Manager?.UserName)? project.Manager.UserName : 'NO MANAGER !!!' }}</p>
                 </md-list-item>
                 <md-divider></md-divider>
             </ng-container>
